@@ -37,7 +37,6 @@ export default class AuthService {
 	static async login(email, password) {
 		//TODO: implement login logic with API
 		const hashPassword = await AuthService.encryptPassword(password);
-		console.log(hashPassword);
 		const data = await ApiService.login(email, hashPassword);
 		localStorage.setItem('jwtToken', data.jwtToken.token);
 		localStorage.setItem('user', JSON.stringify(data.user));
