@@ -71,6 +71,9 @@ onMounted(() => {
 					{{ user.firstName }} {{ user.lastName }}
 				</RouterLink>
 			</li>
+			<li v-if="isLoggedIn && user.isAdmin">
+				<RouterLink to="/admin">Admin</RouterLink>
+			</li>
 		</ul>
 	</nav>
 </template>

@@ -9,6 +9,9 @@ import RegisterView from '../views/RegisterView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import MyMediaView from '../views/MyMediaView.vue'
 import PaymentView from "@/views/PaymentView.vue";
+import AdminView from "@/views/AdminView.vue";
+import AddMediaView from "@/views/AddMediaView.vue";
+import EditMediaView from "@/views/EditMediaView.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -93,6 +96,30 @@ const router = createRouter({
 			component: PaymentView,
 			meta: {
 				requiredAuth: true,
+			},
+		},
+		{
+			path: '/admin',
+			name: 'admin',
+			component: AdminView,
+			meta: {
+				requiredAuth: true
+			},
+		},
+		{
+			path: '/admin/add-media',
+			name: 'admin-add-media',
+			component: AddMediaView,
+			meta: {
+				requiredAuth: true
+			},
+		},
+		{
+			path: '/admin/edit-media/:id',
+			name: 'admin-edit-media',
+			component: EditMediaView,
+			meta: {
+				requiredAuth: true
 			},
 		},
 	],
