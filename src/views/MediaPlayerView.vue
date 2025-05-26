@@ -35,8 +35,20 @@ const loadMediaToken = async () => {
 // Load media, recommended media and token when the component is mounted
 onMounted(async () => {
 	media.value = await loadMedia();
+	// check if user is connected or is free media
+	if (!media.value || (media.value.price > 0 && !JSON.parse(localStorage.getItem('user')))) {
+		window.location.href = '/store/' + mediaId;
+		return;
+	}
 	recommendedMedias.value = await loadRecommendedMedias();
-	url.value = await loadMediaToken();
+	try {
+		url.value = await loadMediaToken();
+	} catch (error) {
+		console.error("Error loading media token:", error);
+		window.location.href = '/store/' + mediaId;
+		return;
+	}
+	
 });
 </script>
 

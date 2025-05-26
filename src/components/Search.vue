@@ -14,6 +14,10 @@ const props = defineProps({
 		type: Number,
 		default: false,
 	},
+	isAlreadyPurchased: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 // Fetch tags from the API
@@ -40,10 +44,19 @@ const fetchMedias = async () => {
 	}
 	const response = await ApiService.searchMedias(params);
 	
-	// mask loading message
-	isLoading.value = false;
-	
-	return response;
+	// If the user has already purchased the media, filter them out
+	if (props.isAlreadyPurchased || !props.userId) {
+		isLoading.value = false;
+		return response;
+	} else {
+		delete params.userId;
+		const allMedias = await ApiService.searchMedias(params);
+		const filteredMedias = allMedias.filter(media => 
+			!response.some(purchasedMedia => purchasedMedia.id === media.id)
+		);
+		isLoading.value = false;
+		return filteredMedias;
+	}
 };
 
 // Filter medias based on search query and selected tags

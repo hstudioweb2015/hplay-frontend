@@ -45,9 +45,6 @@ const router = createRouter({
 			path: '/media/:id',
 			name: 'media',
 			component: MediaPlayerView,
-			meta: {
-				requiredAuth: true,
-			},
 		},
 		{
 			path: '/cart',

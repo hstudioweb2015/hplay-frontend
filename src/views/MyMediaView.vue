@@ -10,7 +10,7 @@ const userId = JSON.parse(localStorage.getItem('user'))?.id || null;
 <template>
 	<div class="my-media">
 		<h1 class="my-media-title">Mes Médias</h1>
-		<Search @update:medias="medias = $event" :userId="userId" />
+		<Search @update:medias="medias = $event" :userId="userId" :isAlreadyPurchased="true" />
 		<MediaList :medias="medias" :itemsType="'media'" />
 	</div>
 </template>

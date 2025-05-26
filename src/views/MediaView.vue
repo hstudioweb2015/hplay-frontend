@@ -11,9 +11,18 @@ const media = ref(null);
 
 // Get the media data from the API
 const loadMedia = async () => {
-	//TODO: remove this and replace with API call
 	//TODO: check if media is already bought by the user
-	return await ApiService.getMedia(mediaId);
+	const mediaData = await ApiService.getMedia(mediaId);
+	if ((await ApiService.searchMedias({
+		name: mediaData.name,
+		limit: 1,
+		tags: mediaData.tags,
+		userId: parseInt(JSON.parse(localStorage.getItem('user'))?.id)
+	})).length > 0) {
+		window.location.href = `/media/${mediaId}`;
+	} else {
+		return mediaData;
+	}
 }
 
 // Load media when the component is mounted

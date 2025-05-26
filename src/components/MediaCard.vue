@@ -1,6 +1,7 @@
 <script setup>
 import Media from "@/libs/Media.js";
 import TagList from "@/components/TagList.vue";
+import {onMounted, ref} from "vue";
 
 defineProps({
 	media: {
@@ -26,7 +27,7 @@ const descriptionLimit = 50;
 </script>
 
 <template>
-	<RouterLink :to="`/${mediaType}/${media.id}`">
+	<RouterLink :to="media.price > 0 ? `/${mediaType}/${media.id}` : `/media/${media.id}`">
 		<div class="video-card" :key="media.id">
 			<img :src="media.preview" :alt="media.name" class="video-thumbnail" />
 			<div class="video-info">
