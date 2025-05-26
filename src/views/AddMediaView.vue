@@ -113,8 +113,12 @@ const submitForm = async () => {
 			});
 		}
 
-		// Navigate back to admin page after successful upload
-		router.push('/admin');
+		// Navigate back to admin if user is admin or to store if not
+		if (JSON.parse(localStorage.getItem('user'))?.isAdmin) {
+			router.push('/admin');
+		} else {
+			router.push('/store');
+		}
 	} catch (error) {
 		console.error('Error uploading media:', error);
 		errorMessage.value = 'Une erreur est survenue lors de l\'upload du média.';

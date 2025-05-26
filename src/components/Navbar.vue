@@ -74,6 +74,9 @@ onMounted(() => {
 			<li v-if="isLoggedIn && user.isAdmin">
 				<RouterLink to="/admin">Admin</RouterLink>
 			</li>
+			<li v-if="isLoggedIn && user.isContributor && !user.isAdmin">
+				<RouterLink to="/admin/add-media">Ajouter un média</RouterLink>
+			</li>
 		</ul>
 	</nav>
 </template>

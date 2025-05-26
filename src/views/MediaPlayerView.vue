@@ -46,7 +46,6 @@ onMounted(async () => {
 	} catch (error) {
 		console.error("Error loading media token:", error);
 		window.location.href = '/store/' + mediaId;
-		return;
 	}
 	
 });
