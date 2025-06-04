@@ -11,7 +11,7 @@ HPlay is a VOD streaming platform that allows users to watch medias on demand.
 
 List all dependencies and their version needed by the project as :
 
-* IDE used [Visual Studio Code 1.95.1](https://code.visualstudio.com/docs/setup/windows) or later with the [Flutter extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter).
+* IDE used [Visual Studio Code 1.95.1](https://code.visualstudio.com/docs/setup/windows)
 * mermaid extention [mermaid for vscode](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
 * git version 2.43.0.windows ou ultérieure [official doc](https://git-scm.com/)
 
@@ -39,10 +39,15 @@ npm run build
 
 ## Directory structure
 ```bash
-├───.dart_tool
-├───.idea
-│   ├───libraries
-│   └───runConfigurations
+├───public
+├───doc
+└───src
+    ├───assets
+    ├───components
+    ├───libs
+    ├───router
+    ├───services
+    └───views
 ```
 ## Collaborate
 
