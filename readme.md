@@ -40,6 +40,7 @@ npm run build
 ## Directory structure
 ```bash
 ├───public
+├───doc
 └───src
     ├───assets
     ├───components
